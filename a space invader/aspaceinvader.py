@@ -24,7 +24,7 @@ screen_width = 550
 screen_height = 800
 size = [screen_width, screen_height]
 screen = pygame.display.set_mode(size)
-pygame.display.set_caption('alien slayer')
+pygame.display.set_caption('A Space Invader')
 clock = pygame.time.Clock()
 FPS = 40
 
@@ -59,7 +59,8 @@ class Player(pygame.sprite.Sprite):
         self.speed_x2 = 0
         self.speed_y1 = 0
         self.speed_y2 = 0
-        
+        self.damage = 10
+
         self.health = 30
         self.lives = 3
         self.width = 40
@@ -150,7 +151,7 @@ class Alien(pygame.sprite.Sprite):
         
     def __init__(self):
         super().__init__()
-        self.health = 100
+        self.health = 10
         self.bar_red_length = 0
         self.bar_green_length = 30
         self.bar_location_y = 0
@@ -552,9 +553,9 @@ while not done:
     gameover_sound.play()
     draw_message('GAME OVER!', screen_width/4 - 10, screen_height/3, red, 70)
     pygame.time.wait(waiting_to_talk)
-    draw_message('Press "s" to shut me up :)', screen_width/6, screen_height - 150, pink, 30)
+    draw_message('Press "s" to hear more noise :)', screen_width/6, screen_height - 150, pink, 30)
 
     draw_message('Score: ' + str(player.score), screen_width/6, 100, yellow, 50)
     draw_message('wave: ' + str(wave - 1), screen_width/6, 150, yellow, 50)
-    draw_message('Press "l" to go to the lobby...', screen_width/6 - 10, screen_height/2 + 100, green, 50)
+    draw_message('Press "l"(not i) for lobby...', screen_width/6 - 10, screen_height/2 + 100, green, 50)
     pygame.display.flip()
